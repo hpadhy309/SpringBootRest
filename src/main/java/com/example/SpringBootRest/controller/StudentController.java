@@ -1,6 +1,7 @@
 package com.example.SpringBootRest.controller;
 
 import com.example.SpringBootRest.StudentService;
+import com.example.SpringBootRest.entity.Product;
 import com.example.SpringBootRest.entity.Student;
 import com.example.SpringBootRest.serviceImpl.StudentServiceImpl;
 import lombok.AllArgsConstructor;
@@ -45,5 +46,13 @@ public class StudentController {
         studentService.deleteStudent(studentId);
         return new ResponseEntity<>("User successfully deleted!", HttpStatus.OK);
     }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable("id") Long studentId, @RequestBody Student student){
+       student.setId(studentId) ;
+       Student updateStudent = studentService.updateStudent(student);
+        return new ResponseEntity<>(updateStudent, HttpStatus.OK);
+    }
+
 
 }
