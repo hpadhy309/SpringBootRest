@@ -1,9 +1,8 @@
 package com.example.SpringBootRest.controller;
 
-import com.example.SpringBootRest.StudentService;
-import com.example.SpringBootRest.entity.Product;
+
 import com.example.SpringBootRest.entity.Student;
-import com.example.SpringBootRest.serviceImpl.StudentServiceImpl;
+import com.example.SpringBootRest.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/api/student")
 public class StudentController {
-    private StudentServiceImpl studentService;
+    private StudentService studentService;
 
 
 

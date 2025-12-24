@@ -28,6 +28,7 @@ public class StudentServiceImpl implements StudentService {
         updateStudent.setName(student.getName());
         updateStudent.setEmail(student.getEmail());
         updateStudent.setPhone(student.getPhone());
+        studentRepository.save(updateStudent);
         return updateStudent;
     }
 
