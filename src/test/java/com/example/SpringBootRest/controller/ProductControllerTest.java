@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(ProductController.class)
 @AutoConfigureMockMvc(addFilters = false)
 @ContextConfiguration(classes = SpringBootRestApplication.class)
-public class ProductControllerTest {
+class ProductControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -53,10 +53,10 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void givenProduct_whenCreateProduct_thenReturnCreatedProduct() throws Exception {
+     void givenProduct_whenCreateProduct_thenReturnCreatedProduct() throws Exception {
         // given
         given(productService.createProduct(any(Product.class)))
-                .willAnswer((invocation) -> invocation.getArgument(0));
+                .willAnswer(invocation -> invocation.getArgument(0));
 
         // when
         ResultActions response = mockMvc.perform(post("/api/product")
@@ -72,7 +72,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void givenProductId_whenGetProductById_thenReturnProduct() throws Exception {
+    void givenProductId_whenGetProductById_thenReturnProduct() throws Exception {
         // given
         long productId = 1L;
         given(productService.getProductById(productId)).willReturn(product);
@@ -88,7 +88,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void givenListOfProducts_whenGetAllProducts_thenReturnProductsList() throws Exception {
+    void givenListOfProducts_whenGetAllProducts_thenReturnProductsList() throws Exception {
         // given
         Product product2 = Product.builder()
                 .id(2L)
@@ -110,7 +110,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void givenUpdatedProduct_whenUpdateProduct_thenReturnUpdatedProduct() throws Exception {
+    void givenUpdatedProduct_whenUpdateProduct_thenReturnUpdatedProduct() throws Exception {
         // given
         long productId = 1L;
         Product updatedProduct = Product.builder()
@@ -121,7 +121,7 @@ public class ProductControllerTest {
                 .build();
 
         given(productService.updateProduct(ArgumentMatchers.any(Product.class)))
-                .willAnswer((invocation) -> invocation.getArgument(0));
+                .willAnswer(invocation -> invocation.getArgument(0));
 
         // when
         ResultActions response = mockMvc.perform(put("/api/product/{id}", productId)
@@ -136,7 +136,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void givenProductId_whenDeleteProduct_thenReturn200() throws Exception {
+    void givenProductId_whenDeleteProduct_thenReturn200() throws Exception {
         // given
         long productId = 1L;
         willDoNothing().given(productService).deleteProduct(productId);
@@ -152,7 +152,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void givenNonExistingProductId_whenGetProductById_thenReturnNotFound() throws Exception {
+    void givenNonExistingProductId_whenGetProductById_thenReturnNotFound() throws Exception {
         // given
         long productId = 1L;
         given(productService.getProductById(productId)).willReturn(null);
